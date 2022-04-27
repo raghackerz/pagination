@@ -118,7 +118,7 @@ const Home = () => {
 
     return (
         <div>
-            <SearchBar setSearchTerm={setSearchTerm}/>
+            <SearchBar setSearchTerm={setSearchTerm} setCurrentPage={setCurrentPage}/>
             <div>{displayElements}</div>
             <Pagination totalCount={totalCount} pageSize={pageSize} currentPage={currentPage} setCurrentPage={setCurrentPage} shownPageNumbers={shownPageNumbers}/>
         </div>
