@@ -8,6 +8,11 @@ export const Wrapper = styled.div`
     border-radius: 0.5rem;
     box-shadow: 1rem 1rem 1rem hsl(0 0% 0% / 0.1);
     h1 {
-        text-align: center;
+        //text-align: center;
+        font-size: 1.1rem;
     }
+`;
+export const UserId = styled.p`
+    padding: 0;
+    font-size: 0.9rem;
 `;

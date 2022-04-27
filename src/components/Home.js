@@ -57,7 +57,7 @@ const Home = () => {
         if(error) return;
         for(let index = (currentPage-1)*pageSize;index < data.length && index < (currentPage-1)*pageSize + pageSize; index++) {
             let key = data[index];
-            displayElement.push(<Card key={key.id} header={key.title} body={key.body}/>);
+            displayElement.push(<Card key={key.id} userId={key.userId} header={key.title} body={key.body}/>);
         }
         setDisplayElements(displayElement);
     },[loading, error, currentPage, setDisplayElements, data, pageSize]);
@@ -77,6 +77,9 @@ const Home = () => {
                     newData.push(key);
                 }
                 else if(key.body.search(searchTerm) !== -1) {
+                    newData.push(key);
+                }
+                else if(key.userId.toString() === searchTerm) {
                     newData.push(key);
                 }
             });

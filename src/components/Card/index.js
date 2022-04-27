@@ -1,10 +1,11 @@
 import React from 'react';
 
 //styles
-import {Wrapper} from './Card.styles';
+import {Wrapper,UserId} from './Card.styles';
 
-const Card = ({header, body}) => (
+const Card = ({userId,header, body}) => (
     <Wrapper>
+        <UserId>User : {userId}</UserId>
         <h1>
             {header}
         </h1>

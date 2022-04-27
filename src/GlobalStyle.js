@@ -5,6 +5,8 @@ export const GlobalStyle = createGlobalStyle`
     --lightGrey: #eee;
     --medGrey: #353535;
     --darkGrey: #1c1c1c;
+    --white: #fff;
+    --fontBig: 1.5rem;
   }
 
   * {
