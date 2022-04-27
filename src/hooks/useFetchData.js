@@ -18,25 +18,5 @@ export const useFetchData = (setData,setError,setLoading,setOrignalData,orignalD
             }
         };
         fetchData();
-    }, [ ]);
-    /*useEffect(() => {
-        const searchText = () => {
-            if(searchTerm === '') {
-                setData(orignalData);
-                return;
-            }
-
-            let newData = [];
-            orignalData.map((key,index) => {
-                if(key.title.search(searchTerm) !== -1) {
-                    newData.push(key);
-                }
-                else if(key.body.search(searchTerm) !== -1) {
-                    newData.push(key);
-                }
-            });
-            setData(newData);
-        };
-        searchText();
-    }, [searchTerm,orignalData,setData]);*/
+    },[setData, setOrignalData, setError, setLoading]);
 };
