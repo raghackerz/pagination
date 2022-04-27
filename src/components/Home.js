@@ -7,20 +7,36 @@ import Spinner from './Spinner';
 import SearchBar from './SearchBar';
 import Card from './Card';
 
-//hooks
-import {useFetchData} from '../hooks/useFetchData';
 
 const Home = () => {
-    const [data,setData] = useState(null);
     const [orignalData,setOrignalData] = useState(null);
+    const [data,setData] = useState(null);
     const [loading,setLoading] = useState(true);
     const [error,setError] = useState(false);
     const [displayElements,setDisplayElements] = useState([]);
     const [currentPage,setCurrentPage] = useState(1);
-    const [searchTerm,setSearchTerm] = useState(1);
+    const [searchTerm,setSearchTerm] = useState('');
     const [pageSize,setPageSize] = useState(5);
     const [shownPageNumbers, setShownPageNumbers] = useState(7);
     const [width, setWidth] = useState(window.innerWidth);
+    useEffect(() => {
+        const fetchData = async () => {
+            const url = "https://jsonplaceholder.typicode.com/posts";
+            try {
+                const response = await (await fetch(url)).json();
+                setData(response);
+                setOrignalData(response);
+                setError(false);
+            }
+            catch(err) {
+                setError(true);
+            }
+            finally {
+                setLoading(false);
+            }
+        };
+        fetchData();
+    },[]);
 
     const updateDimensions = () => {
         setWidth(window.innerWidth);
@@ -88,7 +104,7 @@ const Home = () => {
         searchText();
     }, [searchTerm,orignalData,setData,loading,error]);
 
-    useFetchData(setData,setError,setLoading,setOrignalData, orignalData, searchTerm, data, loading, error);
+    //useFetchData(setData,setError,setLoading,setOrignalData);
 
     if(loading === true) {
         return (<Spinner/>);
